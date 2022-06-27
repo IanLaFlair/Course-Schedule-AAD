@@ -4,7 +4,6 @@
     <string name="show_list">Show List</string>
     <string name="settings">Settings</string>
     <string name="course_name">Course Name</string>
-    <string name="lecturer">Lecturer</string>
     <string name="note">Note</string>
     <string name="insert_course">Insert Course</string>
     <string name="today_schedule">Today\'s Schedule</string>
@@ -53,5 +52,7 @@
     <string name="empty_list_message">No courses added yet</string>
     <string name="input_empty_message">Course name and time cannot be empty</string>
     <string name="lecturer">Lecturer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

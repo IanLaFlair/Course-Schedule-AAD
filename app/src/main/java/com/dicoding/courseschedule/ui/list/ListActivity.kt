@@ -20,6 +20,7 @@ import com.dicoding.courseschedule.ui.add.AddCourseActivity
 import com.dicoding.courseschedule.ui.detail.DetailActivity
 import com.dicoding.courseschedule.ui.setting.SettingsActivity
 import com.dicoding.courseschedule.util.SortType
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListActivity : AppCompatActivity() {
 
@@ -37,8 +38,10 @@ class ListActivity : AppCompatActivity() {
 
         val factory = ListViewModelFactory.createFactory(this)
         viewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
-
-        setFabClick()
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            setFabClick()
+        }
         setUpRecycler()
         initAction()
         updateList()
@@ -83,7 +86,6 @@ class ListActivity : AppCompatActivity() {
         val view = findViewById<View>(R.id.action_sort) ?: return
         PopupMenu(this, view).run {
             menuInflater.inflate(R.menu.sort_course, menu)
-
             setOnMenuItemClickListener {
                 viewModel.sort(
                     when (it.itemId) {
@@ -106,6 +108,7 @@ class ListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_sort -> {
+                showSortMenu()
                 true
             }
             R.id.action_settings -> {
@@ -136,7 +139,7 @@ class ListActivity : AppCompatActivity() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val course = (viewHolder as CourseViewHolder).getCourse()
-
+            viewModel.delete(course)
         }
     }
 }
