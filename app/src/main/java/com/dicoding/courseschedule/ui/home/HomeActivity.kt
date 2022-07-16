@@ -37,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
             viewModel = HomeViewModel(repo)
             val nearestSchedule = repo?.getNearestSchedule(queryType)
             nearestSchedule?.observe(this){
+                Log.d("ISOBSERVED","1")
                 showTodaySchedule(it)
             }
         }

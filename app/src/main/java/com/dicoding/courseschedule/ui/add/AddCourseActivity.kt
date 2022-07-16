@@ -68,13 +68,12 @@ class AddCourseActivity : AppCompatActivity(), TimePickerFragment.DialogTimeList
 
     override fun onDialogTimeSet(tag: String?, hour: Int, minute: Int) {
         if (tag == "start"){
-            // left pad dengan char '0' sepanjang 2 karakter
-            val time = "${hour}:${minute}"
+            val time = String.format("%02d", hour) + ":" + String.format("%02d", minute)
             txt_start.text = time
             startTime = time
         }
         else{
-            val time = "${hour}:${minute}"
+            val time = String.format("%02d", hour) + ":" + String.format("%02d", minute)
             txt_end.text = time
             endTime = time
         }
